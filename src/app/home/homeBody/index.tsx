@@ -14,7 +14,7 @@ function HomeBody() {
             </p>
           </div>
 
-          <div className=" w-60 h-36  ">
+          <div className=" w-fit h-36  ">
             <p className=" express text-center lg:text-left  py-3 text-orange-400 font-bold  w-full font-style: normal   text-5xl  mb-6 lg:w-2/6 leading-none  xl:text-5xl">
               Express Freely
             </p>
@@ -38,7 +38,7 @@ function HomeBody() {
           </div>
         </div>
 
-        <div className="mx-auto flex justify-center md:w-screen items-center w-2/3">
+        <div className="mx-auto flex justify-center md:w-fit items-center w-2/3">
           <Image src={homepagepic} alt="homepic" />
         </div>
       </div>

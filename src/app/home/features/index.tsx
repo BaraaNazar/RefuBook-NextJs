@@ -1,13 +1,12 @@
-"use client"
+"use client";
 import React from "react";
-import useEmblaCarousel from 'embla-carousel-react'
 import Image from "next/image";
 // import { Carousel } from 'flowbite-react';
-import { MdStars } from 'react-icons/md';
+import { MdStars } from "react-icons/md";
 import logo from "../../../../public/images/img1.png";
+import Carousel from "./features-carousel";
 
 function Features() {
-  const [emblaRef] = useEmblaCarousel()
   const featuressectioncontent = [
     {
       id: 1,
@@ -36,11 +35,14 @@ function Features() {
   ];
 
   return (
-    <div className="flex flex-row bg-[#E5FAFF] p-5 embla" ref={emblaRef}>
-      <div className="grid grid-cols-2 grid-rows-2 w-1/2 p-12  embla__container">
+    <div className="lg:flex lg:flex-row bg-[#E5FAFF] lg:p-5 flex flex-col">
+      <div className="lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:w-1/2 lg:p-12 hidden">
         {featuressectioncontent.map((feature) => {
           return (
-            <div className="h-full items-center w-[75%] gap-2 embla__slide" key={feature.id}>
+            <div
+              className="h-full items-center w-[75%] gap-2 embla__slide"
+              key={feature.id}
+            >
               <header className="flex xl:gap-x-2 gap-y-10 pt-10 justify-start  text-center mt-2 sm:pt-2 ">
                 <MdStars className="mt-[2px] text-2xl text-zinc-500" />
                 <h3 className="font-bold">{feature.title}</h3>
@@ -52,9 +54,16 @@ function Features() {
           );
         })}
       </div>
-        <div className="mx-auto md:pl-[100px] lg:pl-[200px] sm:pt-[20px] pl-[75px]">
-          <Image className="h-[350px] w-[350px] mx-auto " src={logo} alt="" />
-        </div>
+      <div className="mx-auto md:pl-[100px] lg:pl-[200px] sm:pt-[20px] pl-[75px]">
+        <Image
+          className="h-[350px] w-[350px] mx-auto "
+          src={logo}
+          alt="image"
+        />
+      </div>
+      <div className="lg:hidden p-20">
+        <Carousel />
+      </div>
     </div>
   );
 }

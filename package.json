@@ -10,11 +10,9 @@
   },
   "dependencies": {
     "@next/font": "13.1.6",
-    "@splidejs/splide": "^4.1.4",
     "@types/node": "18.11.19",
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
-    "embla-carousel-react": "^7.0.9",
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
     "next": "13.1.6",
@@ -22,7 +20,10 @@
     "react-dom": "18.2.0",
     "react-i18next": "^12.1.5",
     "react-icons": "^4.7.1",
-    "typescript": "4.9.5"
+    "react-touch-carousel": "^0.10.2",
+    "swiper": "^9.0.5",
+    "typescript": "4.9.5",
+    "typescript-react-carousel": "^0.1.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",

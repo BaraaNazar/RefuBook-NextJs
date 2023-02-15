@@ -3,6 +3,7 @@ import HomeAbout from "../app/home/homeAbout";
 import Features from "./home/features";
 import HomeBody from "./home/homeBody";
 import Testimonial from "./home/testimonials";
+import OurPartners from "../../src/app/home/our-partners/our-partners"
 
 function Home() {
   return (
@@ -10,7 +11,8 @@ function Home() {
       <HomeBody />
       <HomeAbout />
       <Features />
-      <Testimonial/>
+      <Testimonial />
+      <OurPartners/>
     </div>
   );
 }
