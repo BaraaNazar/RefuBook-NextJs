@@ -43,7 +43,7 @@ function Stories(): JSX.Element {
               <div className="flex lg:flex-row flex-col lg:gap-20 lg:justify-between lg:py-10  py-6 lg:items-stretch items-center">
                 <div className="lg:w-[30.52rem] lg:h-[18.958rem] w-[15.823rem] h-[8.938rem] bg-neutral-900  rounded-sm mb-4">
                   <Image
-                    src={img1}
+                    src={story.urlToImage}
                     alt="Story-Image"
                     width={500}
                     height={500}
@@ -62,7 +62,9 @@ function Stories(): JSX.Element {
                   </p>
                   <div className="flex gap-3 pt-2 items-center">
                     <Image
-                      src={img2}
+                      src={story.urlToImage}
+                      width={500}
+                      height={500}
                       alt="userImage"
                       className=" object-cover lg:w-[2.199rem] lg:h-[2.167rem] w-[1.875rem] h-[1.75rem] bg-[#FEDB9B] rounded-full mt-1"
                     />
