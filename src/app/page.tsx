@@ -3,7 +3,8 @@ import HomeAbout from "../app/home/homeAbout";
 import Features from "./home/features";
 import HomeBody from "./home/homeBody";
 import Testimonial from "./home/testimonials";
-import OurPartners from "../../src/app/home/our-partners/our-partners"
+import OurPartners from "../../src/app/home/our-partners/our-partners";
+import Stories from "./home/stories";
 
 function Home() {
   return (
@@ -12,7 +13,8 @@ function Home() {
       <HomeAbout />
       <Features />
       <Testimonial />
-      <OurPartners/>
+      <OurPartners />
+      <Stories />
     </div>
   );
 }
