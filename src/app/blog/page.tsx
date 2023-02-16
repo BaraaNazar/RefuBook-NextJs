@@ -1,7 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import Cards from './blo2/blogcards';
-import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Keyboard, Pagination, Autoplay } from "swiper";
 import "swiper/css";
@@ -17,6 +16,8 @@ interface Article {
   url: string;
   urlToImage: string;
   publishedAt: string;
+  content:string;
+  author:string;
 }
 
 function Blog(): JSX.Element {
