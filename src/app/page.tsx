@@ -5,6 +5,7 @@ import HomeBody from "./home/homeBody";
 import Testimonial from "./home/testimonials";
 import OurPartners from "../../src/app/home/our-partners/our-partners";
 import Stories from "./home/stories";
+import "./styles.css";
 
 function Home() {
   return (

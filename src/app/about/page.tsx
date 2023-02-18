@@ -5,6 +5,7 @@ import Team from "./team/index";
 import Testimonial from "../home/testimonials";
 import OurPartners from "../home/our-partners/our-partners";
 import CallToAction from "./call-to-action/index";
+import "./styles.css";
 
 function page() {
   return (
