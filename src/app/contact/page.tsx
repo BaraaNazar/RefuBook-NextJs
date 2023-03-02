@@ -1,15 +1,112 @@
-import React from 'react';
+"use client";
+import React, { useState } from 'react';
 import { ImFacebook, ImTwitter } from 'react-icons/im';
 import { FaInstagram } from 'react-icons/fa';
 import Image from "next/image";
 import Link from "next/link";
 import contactImage from '../../../public/images/Contact.png';
-import Navbar from "../navbar"
+import Navbar from "../navbar";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import axios from 'axios';
 
-function Contact() {
+function Contact(): JSX.Element {
+  const [email, setEmail] = useState<string>("");
+  const [name, setName] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const notify = () => {
+    toast("Default Notification !");
+
+    toast.success('Well, done!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+
+      toast.error('Something wrong!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+
+    toast.warn("Warning Notification !", {
+      position: toast.POSITION.BOTTOM_LEFT
+    });
+
+    toast.info("Info Notification !", {
+      position: toast.POSITION.BOTTOM_CENTER
+    });
+
+    toast("Custom Style Notification with css class!", {
+      position: toast.POSITION.BOTTOM_RIGHT,
+      className: 'foo-bar'
+    });
+  };
+
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    e.preventDefault();
+    if (!email || !name || !message) {
+      toast.error('Something wrong!', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    } else {
+      try {
+        setLoading(true);
+        const { data } = await axios.post('/api/email', {
+          name,
+          email,
+          message,
+        });
+        setLoading(false);
+        toast.success(data.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          });
+      } catch (error) {
+        setLoading(false);
+        toast.error(error.response?.data?.message || "Something went wrong.");
+      }
+    }
+  };
   return (
     <>
-      <div className="relative z-10 flex flex-col-reverse md:flex-row md:justify-center md:gap-10 h-screen">
+<ToastContainer
+position="bottom-center"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>      <div className="relative z-10 flex flex-col-reverse md:flex-row md:justify-center md:gap-10 h-screen">
         <div className="mx-auto w-full md:w-[50%] relative z-10">
           <h1 className="sm:text-left text-center sm:mx-auto md:pt-16  font-bold text-3xl sm:text-5xl  text-[#4699C2]">
           Get in Touch
@@ -17,12 +114,15 @@ function Contact() {
           <p className="md:pt-5 text-[#8B8F9C] text-center mx-5 sm:mx-2 md:mx-1 sm:text-start md:w-[60%]">
           Want to get in touch? We`d love to hear from you .Here how you can reach us
           </p>
-          <form  className="flex flex-col">
+          <form 
+          onSubmit={submitHandler}
+          className="flex flex-col">
             <div>
             <p className=" text-[#8B8F9C]  md:pt-3 md:pb-1 mx-5 sm:mx-2 md:mx-1 ">
             Name
             </p>
             <input
+              onChange={(e)=>{ setName(e.target.value)}}
               placeholder="Your Name..."
               className="md:w-[450px] h-[50px] sm:h-[50px] rounded-md text-left mx-5 sm:mx-2 md:mx-1 pl-2 bg-slate-200"
               required
@@ -32,7 +132,9 @@ function Contact() {
             Email
             </p>
             <input
+              onChange={(e)=>{ setEmail(e.target.value)}}
               placeholder="hello@gmail.com"
+              type="email"
               className="md:w-[450px] h-[50px] sm:h-[50px] rounded-md text-left mx-5 sm:mx-2 md:mx-1 pl-2 bg-slate-200"
               required
             />
@@ -41,14 +143,16 @@ function Contact() {
             Message
             </p>
             <textarea
+            onChange={(e)=>{ setMessage(e.target.value)}}
               placeholder="Your Message..."
               aria-label="disabled input"
               className="rounded-md block placeholder-pl-10 min-h-[160px] max-h-[160px] md:min-h-[199px]  md:max-h-[200px] md:w-[450px] mt-3 mx-5 sm:mx-2 md:mx-1  pl-2 bg-slate-200"
               required
             />
             <button
+            onClick={submitHandler}
               type="submit"
-              className="bg-[#4699C2] mx-auto rounded-[1009px] mt-2 md:ml-1 md:mt-2 text-white w-[450px] h-[40px] relative"
+              className="bg-[#4699C2] mx-auto rounded-[1009px] mt-2 md:ml-1 md:mt-2 text-white lg:w-[450px] w-[80px] h-[40px] relative"
             >
               Send
             </button>
