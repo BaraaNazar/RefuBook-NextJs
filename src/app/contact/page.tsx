@@ -69,28 +69,6 @@ function Contact(): JSX.Element {
         theme: "light",
         });
     } else {
-      try {
-        setLoading(true);
-        const { data } = await axios.post('/api/email', {
-          name,
-          email,
-          message,
-        });
-        setLoading(false);
-        toast.success(data.message, {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          });
-      } catch (error) {
-        setLoading(false);
-        toast.error(error.response?.data?.message || "Something went wrong.");
-      }
     }
   };
   return (
@@ -150,7 +128,6 @@ theme="light"
               required
             />
             <button
-            onClick={submitHandler}
               type="submit"
               className="bg-[#4699C2] mx-auto rounded-[1009px] mt-2 md:ml-1 md:mt-2 text-white lg:w-[450px] w-[80px] h-[40px] relative"
             >
